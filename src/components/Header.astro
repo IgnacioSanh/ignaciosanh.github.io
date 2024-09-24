@@ -1,0 +1,53 @@
+---
+import LanguagePicker from "./LanguagePicker.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = [
+  {
+    title: t("nav.experience"),
+    label: t("nav.experience").toLowerCase(),
+    url: "/#experience",
+  },
+  {
+    title: t("nav.projects"),
+    label: t("nav.projects").toLowerCase(),
+    url: "/#projects",
+  },
+  {
+    title: t("nav.about_me"),
+    label: t("nav.about_me").toLowerCase(),
+    url: "/#about-me",
+  },
+  {
+    title: t("nav.contact"),
+    label: t("nav.contact").toLowerCase(),
+    url: "mailto:ignacio.sanhueza.l@gmail.com",
+  },
+];
+---
+
+<header
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+>
+  <nav
+    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+  >
+    {
+      navItems.map(({ url, title, label }) => (
+        <a
+          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          href={url}
+          aria-label={label}
+        >
+          {title}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+    <LanguagePicker />
+  </nav>
+</header>

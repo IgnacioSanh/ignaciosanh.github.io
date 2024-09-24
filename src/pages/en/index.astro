@@ -1,0 +1,98 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import Experience from "@/components/Experience.astro";
+
+import Briefcase from "@/components/icons/Briefcase.astro";
+import TitleSection from "@/components/TitleSection.astro";
+import AcademicCap from "@/components/icons/AcademicCap.astro";
+import Education from "@/components/Education.astro";
+import User from "@/components/icons/User.astro";
+import AboutMe from "@/components/AboutMe.astro";
+
+const experience: Experience[] = [
+  {
+    date: "September 2021 - Present",
+    company: "Globant",
+    description:
+      "Worked with React, React Native, Node JS and Next JS in several projects. All of them with big companies from United States, such as Walmart, The Walt Disney company and Mission Lane.",
+    title: "Senior Web UI Developer",
+    link: "/globant",
+    technologies: [
+      "react native",
+      "typescript",
+      "react",
+      "jest",
+      "javascript",
+      "nextjs",
+      "node",
+    ],
+  },
+  {
+    date: "September 2019 - September 2021 (2 years)",
+    company: "Khipu",
+    description:
+      "Developed different projects, such as a payment gateway as a service, using scraping, and mantaining/adding new features to a cross platform app.",
+    title: "Full Stack Developer",
+    link: "/khipu",
+    technologies: ["react native", "react", "grails", "node", "java", "jest"],
+  },
+  {
+    date: "March 2017 - Sept 2019 (2.5 years)",
+    company: "Santander Bank",
+    description:
+      "SQL Server script optimization and automation for different processes. Developer of an .NET C# app to make simulations for bank provisions for Chile, according to IFRS regulation.Developer of Reports and visualizations using Power BI.",
+    title: "Full Stack Developer / Data Analyst",
+    link: "/santander",
+    technologies: ["sql-server", ".net", "c#", "powerbi", "react"],
+  },
+  {
+    date: "Feb 2014 - March 2017 (4 years)",
+    company: "Metric Arts",
+    description:
+      "Worked in several projects as a full stack C# developer, creating apps from scratch. Azure Cloud Developer, using several services, like Azure Functions, Azure SQL Server or virtual machines. BI developer, using Azure SQL Server, stream analytics and Power BI to create a near real time report for a mining company. Developer of a Python based app to make web scraping to retail companies using selenium tool.",
+    title: "Full Stack Developer",
+    link: "/metric-arts",
+    technologies: ["sql-server", ".net", "c#", "powerbi", "azure", "python"],
+  },
+];
+
+const paragraphs = [
+  "My name is Ignacio, but my friends call me 'Nacho' (yeah, like the snack). I began my professional career in a small consultant company as a <strong>Data Analyst</strong>, but soon I started to develop curiosity on becoming a <strong>Full Stack developer</strong>",
+  "I've learned and worked in several programming languages, such as <strong>Python</strong>, <strong>Java</strong>, <strong>.NET</strong> and <strong>Javascript</strong>, until I finally decided to specialize in <strong>React</strong> and <strong>React Native</strong>.",
+  "I've never had any problems speaking both in <strong>english</strong> or <strong>spanish</strong>, which has led me to work in big companies, such as Walmart or Disney.",
+];
+---
+
+<Layout title="Ignacio Sanhueza's porfolio">
+  <main class="px-4">
+    <SectionContainer class="py-16 md:py-36">
+      <Hero />
+    </SectionContainer>
+
+    <SectionContainer>
+      <TitleSection>
+        <Briefcase class="size-8" />
+        Experience
+      </TitleSection>
+      <Experience experience={experience} />
+    </SectionContainer>
+
+    <SectionContainer class="mt-16">
+      <TitleSection>
+        <AcademicCap />
+        Education
+      </TitleSection>
+      <Education />
+    </SectionContainer>
+
+    <SectionContainer>
+      <TitleSection>
+        <User />
+        About me
+      </TitleSection>
+      <AboutMe paragraphs={paragraphs} />
+    </SectionContainer>
+  </main>
+</Layout>
