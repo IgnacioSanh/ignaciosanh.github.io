@@ -1,9 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import ExperienceItem from "./ExperienceItem.astro";
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 interface Props {
   experience: Experience[];
