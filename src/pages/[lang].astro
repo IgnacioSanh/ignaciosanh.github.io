@@ -1,0 +1,60 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import Experience from "@/components/Experience.astro";
+
+import Briefcase from "@/components/icons/Briefcase.astro";
+import TitleSection from "@/components/TitleSection.astro";
+import AcademicCap from "@/components/icons/AcademicCap.astro";
+import Education from "@/components/Education.astro";
+import User from "@/components/icons/User.astro";
+import AboutMe from "@/components/AboutMe.astro";
+
+import { languages as definedLangs } from "@/i18n/ui";
+import { useTranslations, getLangFromUrl } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+	return Object.keys(definedLangs).map((lang) => ({
+		params: { lang },
+	}));
+}
+
+const currentLanguage = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLanguage);
+
+const experience = t("experience.list") as unknown as Experience[];
+const paragraphs = t("bio.paragraphs") as unknown as string[];
+---
+
+<Layout title={t("page.title") as string}>
+	<main class="px-4">
+		<SectionContainer class="py-16 md:py-36">
+			<Hero />
+		</SectionContainer>
+
+		<SectionContainer>
+			<TitleSection>
+				<Briefcase class="size-8" />
+				{t("nav.experience")}
+			</TitleSection>
+			<Experience experience={experience} />
+		</SectionContainer>
+
+		<SectionContainer class="mt-16">
+			<TitleSection>
+				<AcademicCap />
+				Education
+			</TitleSection>
+			<Education />
+		</SectionContainer>
+
+		<SectionContainer>
+			<TitleSection>
+				<User />
+				{t("nav.about_me")}
+			</TitleSection>
+			<AboutMe paragraphs={paragraphs} />
+		</SectionContainer>
+	</main>
+</Layout>
