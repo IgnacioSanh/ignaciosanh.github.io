@@ -1,13 +1,34 @@
 ---
 import { languages } from "@/i18n/ui";
+import LanguagePlanet from "./icons/LanguagePlanet.astro";
+import { getLangFromUrl } from "@/i18n/utils";
+import Check from "./icons/Check.astro";
+
+const langAbreviation = Object.keys(languages);
+const currentLanguage = getLangFromUrl(Astro.url);
 ---
 
-<ul>
-  {
-    Object.entries(languages).map(([lang, label]) => (
-      <li>
-        <a href={`/${lang}/`}>{label}</a>
-      </li>
-    ))
-  }
-</ul>
+<div class="relative group">
+	<button
+		class="flex items-center py-1 px-2 hover:text-blue-500 transition duration-300"
+	>
+		<LanguagePlanet /><span>{currentLanguage}</span></button
+	>
+	<div
+		class="invisible transition-all duration-300 transform origin-top-left scale-0 group-hover:opacity-100 group-hover:visible group-hover:scale-100 absolute mt-2 rounded-md border bg-white text-black min-w-[8rem]"
+	>
+		{
+			langAbreviation.map((lang) => (
+				<a href={`/${lang}`}>
+					<div
+						class="p-2 flex flex-row justify-between items-center cursor-pointer hover:bg-gray-200 lang-item"
+						role="button"
+					>
+						<span>{languages[lang]}</span>{" "}
+						{currentLanguage === lang ? <Check /> : null}
+					</div>
+				</a>
+			))
+		}
+	</div>
+</div>
