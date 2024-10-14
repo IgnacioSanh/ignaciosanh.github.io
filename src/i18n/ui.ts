@@ -8,7 +8,7 @@ export const defaultLang = "en";
 export const ui = {
 	en: {
 		"nav.experience": "Experience",
-		"nav.projects": "Projects",
+		"nav.education": "Education",
 		"nav.about_me": "About me",
 		"nav.contact": "Contact",
 		"hero.available_for_work": "Available for work",
@@ -16,6 +16,22 @@ export const ui = {
 		"hero.description":
 			"+10 years of experience. <strong>Software engineer</strong> from Viña del Mar, Chile 🇨🇱",
 		"page.title": "Ignacio Sanhueza's porfolio",
+		"education.list": [
+			{
+				name: "Viña del Mar University, Chile",
+				imageURL: "/UVM_logo.webp",
+				degree: "Computer Science",
+				date: "2015",
+				url: "https://www.uvm.cl/"
+			},
+			{
+				name: "Centennial College, Canada",
+				imageURL: "/centennial_college_logo.webp",
+				degree: "Computer Science",
+				date: "2014 (one semester abroad)",
+				url: "https://www.centennialcollege.ca/"
+			}
+		],
 		"experience.list": [
 			{
 				date: "September 2021 - Present",
@@ -84,7 +100,7 @@ export const ui = {
 	},
 	es: {
 		"nav.experience": "Experiencia",
-		"nav.projects": "Projects",
+		"nav.education": "Educación",
 		"nav.about_me": "Sobre mí",
 		"nav.contact": "Contacto",
 		"hero.available_for_work": "Disponible para trabajar",
@@ -92,6 +108,22 @@ export const ui = {
 		"hero.description":
 			"+10 años de experiencia. <strong>Ingeniero Civil Informático</strong> de Viña del Mar, Chile 🇨🇱.",
 		"page.title": "Porfolio de Ignacio Sanhueza",
+		"education.list": [
+			{
+				name: "Universidad de Viña del Mar, Chile",
+				imageURL: "/UVM_logo.webp",
+				degree: "Ingeniería Civil Informática",
+				date: "2015",
+				url: "https://www.uvm.cl/"
+			},
+			{
+				name: "Centennial College, Canadá",
+				imageURL: "/centennial_college_logo.webp",
+				degree: "Computer Science",
+				date: "2014 (semestre de intercambio)",
+				url: "https://www.centennialcollege.ca/"
+			}
+		],
 		"experience.list": [
 			{
 				date: "Septiembre 2021 - Presente",

@@ -15,9 +15,9 @@ import { languages as definedLangs } from "@/i18n/ui";
 import { useTranslations, getLangFromUrl } from "@/i18n/utils";
 
 export async function getStaticPaths() {
-	return Object.keys(definedLangs).map((lang) => ({
-		params: { lang },
-	}));
+  return Object.keys(definedLangs).map((lang) => ({
+    params: { lang },
+  }));
 }
 
 const currentLanguage = getLangFromUrl(Astro.url);
@@ -25,36 +25,37 @@ const t = useTranslations(currentLanguage);
 
 const experience = t("experience.list") as unknown as Experience[];
 const paragraphs = t("bio.paragraphs") as unknown as string[];
+const education = t("education.list") as unknown as EducationItem[];
 ---
 
 <Layout title={t("page.title") as string}>
-	<main class="px-4">
-		<SectionContainer class="py-16 md:py-36">
-			<Hero />
-		</SectionContainer>
+  <main class="px-4">
+    <SectionContainer class="py-16 md:py-36" id="hero">
+      <Hero />
+    </SectionContainer>
 
-		<SectionContainer>
-			<TitleSection>
-				<Briefcase class="size-8" />
-				{t("nav.experience")}
-			</TitleSection>
-			<Experience experience={experience} />
-		</SectionContainer>
+    <SectionContainer id="experience">
+      <TitleSection>
+        <Briefcase class="size-8" />
+        {t("nav.experience")}
+      </TitleSection>
+      <Experience experience={experience} />
+    </SectionContainer>
 
-		<SectionContainer class="mt-16">
-			<TitleSection>
-				<AcademicCap />
-				Education
-			</TitleSection>
-			<Education />
-		</SectionContainer>
+    <SectionContainer class="mt-16" id="education">
+      <TitleSection>
+        <AcademicCap />
+        {t("nav.education")}
+      </TitleSection>
+      <Education education={education} />
+    </SectionContainer>
 
-		<SectionContainer>
-			<TitleSection>
-				<User />
-				{t("nav.about_me")}
-			</TitleSection>
-			<AboutMe paragraphs={paragraphs} />
-		</SectionContainer>
-	</main>
+    <SectionContainer id="about-me">
+      <TitleSection>
+        <User />
+        {t("nav.about_me")}
+      </TitleSection>
+      <AboutMe paragraphs={paragraphs} />
+    </SectionContainer>
+  </main>
 </Layout>
